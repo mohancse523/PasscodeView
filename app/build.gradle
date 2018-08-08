@@ -37,6 +37,6 @@ android {
 
 dependencies {
     compile project(':passcodeview')
-    compile 'com.android.support:appcompat-v7:27.0.2'
+    compile 'com.android.support:appcompat-v7:27.1.1'
     testCompile 'junit:junit:4.12'
 }
