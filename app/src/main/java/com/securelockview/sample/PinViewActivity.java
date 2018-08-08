@@ -95,7 +95,7 @@ public class PinViewActivity extends AppCompatActivity {
                 //Do something
             }
         });
-
+        mPinView.setFingerPrintIcon(R.drawable.ic_fingerprint);
     }
 
     @Override

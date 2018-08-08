@@ -26,6 +26,7 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
 import android.support.annotation.Dimension;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -51,7 +52,9 @@ public abstract class PasscodeView extends View {
 
     //Title divider
     @ColorInt
-    private int mDividerColor;                              //Horizontal divider color
+    private int mDividerColor;
+    @DrawableRes
+    private int mFingerPrintIcon;
     private Paint mDividerPaint;                            //Horizontal divider paint color
     private Rect mDividerBound = new Rect();                //Divider bound
     private boolean mIsTactileFeedbackEnabled = true;       //Bool to indicate weather to enable tactile feedback
@@ -203,6 +206,7 @@ public abstract class PasscodeView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         drawDivider(canvas);
+        mBoxFingerprint.setFingerPrintIcon(getFingerPrintIcon());
     }
 
     private void drawDivider(Canvas canvas) {
@@ -245,6 +249,15 @@ public abstract class PasscodeView extends View {
         mDividerColor = dividerColor;
         prepareDividerPaint();
         invalidate();
+    }
+
+    public void setFingerPrintIcon(@DrawableRes final int fingerPrintIcon) {
+        mFingerPrintIcon=fingerPrintIcon;
+    }
+
+    @DrawableRes
+    public int getFingerPrintIcon() {
+        return mFingerPrintIcon;
     }
 
     public boolean isTactileFeedbackEnable() {

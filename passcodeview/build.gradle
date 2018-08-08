@@ -21,7 +21,7 @@ group='com.github.praveenb'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    buildToolsVersion '27.0.3'
 
     // This is important, it will run lint checks but won't abort build
     lintOptions {
@@ -31,11 +31,12 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 27
-
+        versionCode 201
+        versionName "2.0.1"
         consumerProguardFiles 'proguard-rules.pro'
     }
 }
 
 dependencies {
-        compile 'com.android.support:support-annotations:27.0.2'
+    compile 'com.android.support:support-annotations:27.0.2'
 }

@@ -101,23 +101,30 @@ final class BoxFingerprint extends Box implements FingerPrintAuthHelper.FingerPr
         //Do nothing
     }
 
+    private int mFingerPrintIcon;
+
+    public void setFingerPrintIcon(int drawable){
+        mFingerPrintIcon=drawable;
+    }
+
     @SuppressWarnings("deprecation")
     @Override
     void draw(@NonNull Canvas canvas) {
         if (isFingerPrintBoxVisible) {
             //Show fingerprint icon
-            Drawable d = getContext().getResources().getDrawable(R.drawable.ic_fingerprint);
-            d.setBounds((int) (mBounds.exactCenterX() - mBounds.height() / 4),
-                    mBounds.top + 15,
-                    (int) (mBounds.exactCenterX() + mBounds.height() / 4),
-                    mBounds.top + mBounds.height() / 2 + 15);
+            //Drawable d = getContext().getResources().getDrawable(R.drawable.ic_fingerprint);
+            Drawable d = getContext().getResources().getDrawable(mFingerPrintIcon);
+            d.setBounds((int) (mBounds.exactCenterX() - mBounds.height() / 2),
+                    mBounds.top-15,
+                    (int) (mBounds.exactCenterX() + mBounds.height() / 2),
+                    mBounds.top + mBounds.height()-15);
             d.setColorFilter(new PorterDuffColorFilter(mStatusTextPaint.getColor(), PorterDuff.Mode.SRC_ATOP));
             d.draw(canvas);
-
+            float positionY = (float) (mBounds.top + (mBounds.height() / 1.3) - ((mStatusTextPaint.descent() + mStatusTextPaint.ascent()) / 2));
             //Show finger print text
             canvas.drawText(mCurrentStatusText,
-                    mBounds.exactCenterX(),
-                    (float) (mBounds.top + (mBounds.height() / 1.3) - ((mStatusTextPaint.descent() + mStatusTextPaint.ascent()) / 2)),
+                    mBounds.exactCenterX()+15,
+                    positionY+25,
                     mStatusTextPaint);
         }
     }
