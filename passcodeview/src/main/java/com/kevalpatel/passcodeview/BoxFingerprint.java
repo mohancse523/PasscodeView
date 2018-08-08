@@ -114,12 +114,13 @@ final class BoxFingerprint extends Box implements FingerPrintAuthHelper.FingerPr
             //Show fingerprint icon
             //Drawable d = getContext().getResources().getDrawable(R.drawable.ic_fingerprint);
             Drawable d = getContext().getResources().getDrawable(mFingerPrintIcon);
-            d.setBounds((int) (mBounds.exactCenterX() - mBounds.height() / 3),
+            d.setBounds((int) (mBounds.exactCenterX() - mBounds.height() / 4),
                     mBounds.top + 15,
-                    (int) (mBounds.exactCenterX() + mBounds.height() / 3),
-                    (int)(mBounds.top + mBounds.height() / 1.5 + 15));
+                    (int) (mBounds.exactCenterX() + mBounds.height() / 4),
+                    mBounds.top + mBounds.height() / 2 + 15);
             //d.setColorFilter(new PorterDuffColorFilter(mStatusTextPaint.getColor(), PorterDuff.Mode.SRC_ATOP));
             d.draw(canvas);
+
             //Show finger print text
             canvas.drawText(mCurrentStatusText,
                     mBounds.exactCenterX(),
